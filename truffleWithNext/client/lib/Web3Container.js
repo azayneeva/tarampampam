@@ -10,8 +10,6 @@ export default class Web3Container extends React.Component {
     try {
       const web3 = await getWeb3()
       const accounts = await web3.eth.getAccounts()
-      console.log(accounts)
-      console.log(contractDefinition)
       const contract = await getContract(web3, contractDefinition)
       this.setState({ web3, accounts, contract })
     } catch (error) {
@@ -24,9 +22,6 @@ export default class Web3Container extends React.Component {
 
   render () {
     const { web3, accounts, contract } = this.state
-    console.log('web3', web3)
-    console.log('accounts', accounts)
-    console.log('contract', contract)
     return web3 && accounts
       ? this.props.render({ web3, accounts, contract })
       : this.props.renderLoading()
