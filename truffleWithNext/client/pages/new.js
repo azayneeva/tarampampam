@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Card, Button} from 'semantic-ui-react';
 import Web3Container from '../lib/Web3Container';
 import Layout from '../components/Layout';
+import {Link} from '../routes';
 
 class CampaignIndex extends Component {
     state={
@@ -20,7 +21,11 @@ class CampaignIndex extends Component {
         const items = this.state.campaigns.map(campaign => {
             return {
                 header: campaign,
-                description: <a>View campaign</a>,
+                description: (
+                    <Link route={`/campaigns/${campaign}`}>
+                        <a>View campaign</a>
+                    </Link>
+                ),
                 fluid: true
             }
         })
@@ -32,14 +37,18 @@ class CampaignIndex extends Component {
         return (
             <Layout>
                 <div>
-                    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css"></link>
                     <h3>Open Campaigns</h3>
+                    <Link route='/campaigns/new'>
+                        <a>
+                            <Button 
+                                content='Create Campaign'
+                                floated='right'
+                                icon='add'
+                                primary
+                            />
+                        </a>
+                    </Link>
                     {this.renderCampaigns()}
-                    <Button 
-                        content='Create Campaign'
-                        icon='add'
-                        primary
-                    />
                 </div>
             </Layout>
         )
