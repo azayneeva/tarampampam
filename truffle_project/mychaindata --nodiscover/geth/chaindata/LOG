@@ -1,0 +1,68 @@
+=============== Aug 9, 2018 (BST) ===============
+13:07:16.444987 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:07:16.446115 db@open opening
+13:07:16.450466 version@stat F·[] S·0B[] Sc·[]
+13:07:16.450924 db@janitor F·2 G·0
+13:07:16.450964 db@open done T·4.807093ms
+13:08:31.379010 db@close closing
+13:08:31.379978 db@close done T·962.724µs
+=============== Aug 9, 2018 (BST) ===============
+13:08:34.465193 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:08:34.465476 version@stat F·[] S·0B[] Sc·[]
+13:08:34.465512 db@open opening
+13:08:34.465596 journal@recovery F·1
+13:08:34.469826 journal@recovery recovering @1
+13:08:34.591334 memdb@flush created L0@2 N·32271 S·2MiB "\x00\x00\xae..\x82\x88\x11,v9389":"\xff\xfc\x94..\xa5\x05\xa1,v9518"
+13:08:34.596615 version@stat F·[1] S·2MiB[2MiB] Sc·[0.25]
+13:08:34.598762 db@janitor F·3 G·0
+13:08:34.598804 db@open done T·133.2761ms
+13:10:30.996420 db@close closing
+13:10:30.997552 db@close done T·1.127784ms
+=============== Aug 9, 2018 (BST) ===============
+13:13:40.206235 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:13:40.206613 version@stat F·[1] S·2MiB[2MiB] Sc·[0.25]
+13:13:40.206649 db@open opening
+13:13:40.206740 journal@recovery F·1
+13:13:40.210650 journal@recovery recovering @3
+13:13:40.510597 memdb@flush created L0@5 N·82091 S·5MiB "\x00\a\xa7..6\xb8\xf5,v62680":"\xff\xff\xcd..M\xf7\x1d,v58555"
+13:13:40.514987 version@stat F·[2] S·8MiB[8MiB] Sc·[0.50]
+13:13:40.517669 db@janitor F·4 G·0
+13:13:40.517729 db@open done T·311.066018ms
+13:13:40.527582 table@compaction L0·2 -> L1·0 S·8MiB Q·114367
+13:13:40.578206 table@build created L1@8 N·25674 S·2MiB "\x00\x00\xae..\x82\x88\x11,v9389":"b\x00\x00..u\xb4,,v50373"
+13:13:40.635842 table@build created L1@9 N·27456 S·2MiB "b\x00\x00..\xab\x884,v50375":"h\x00\x00..\xe6\xf4.,v73944"
+13:13:40.693214 table@build created L1@10 N·32538 S·2MiB "h\x00\x00..\xf4.t,v73942":"sec..0\xe3x,v5959"
+13:13:40.733939 table@build created L1@11 N·17492 S·1MiB "sec..\x8a\xf2X,v5627":"\xff\xff\xcd..M\xf7\x1d,v58555"
+13:13:40.734044 version@stat F·[0 4] S·8MiB[0B 8MiB] Sc·[0.00 0.08]
+13:13:40.734369 table@compaction committed F+2 S-427KiB Ke·0 D·11202 T·206.688304ms
+13:13:40.734963 table@remove removed @5
+13:13:40.735441 table@remove removed @2
+13:33:16.531389 db@close closing
+13:33:16.532360 db@close done T·964.746µs
+=============== Aug 9, 2018 (BST) ===============
+13:34:54.742864 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:34:54.743239 version@stat F·[0 4] S·8MiB[0B 8MiB] Sc·[0.00 0.08]
+13:34:54.743280 db@open opening
+13:34:54.743399 journal@recovery F·1
+13:34:54.747514 journal@recovery recovering @6
+13:34:55.111753 memdb@flush created L0@12 N·100991 S·6MiB "\x00\x02H..\xd6%\x8f,v165752":"\xff\xfc\xe3..m.\xbd,v205955"
+13:34:55.116019 version@stat F·[1 4] S·15MiB[6MiB 8MiB] Sc·[0.25 0.08]
+13:34:55.119239 db@janitor F·7 G·0
+13:34:55.119285 db@open done T·375.991295ms
+13:34:55.131394 table@compaction L0·1 -> L1·4 S·15MiB Q·215359
+13:34:55.180185 table@build created L1@15 N·26998 S·2MiB "\x00\x00\xae..\x82\x88\x11,v9389":"Hq\xbd..\xe4\xfbw,v142428"
+13:34:55.237686 table@build created L1@16 N·32633 S·2MiB "Hq\xbf..h\xe9e,v197530":"b\x00\x00..\x89,\xcf,v167355"
+13:34:55.297500 table@build created L1@17 N·27058 S·2MiB "b\x00\x00..\x1ak6,v167357":"h\x00\x00..\xb5V|,v78259"
+13:34:55.354734 table@build created L1@18 N·26122 S·2MiB "h\x00\x00..V|t,v78257":"h\x00\x00..\x18D\x8d,v162547"
+13:34:55.421652 table@build created L1@19 N·32382 S·2MiB "h\x00\x00..D\x8dt,v162545":"r\x00\x00..K%\xb8,v149901"
+13:34:55.467285 table@build created L1@20 N·26188 S·2MiB "r\x00\x00..\u007fy\x99,v149903":"\xaa\x90|..\x1c\xb8\x93,v157094"
+13:34:55.507394 table@build created L1@21 N·15750 S·1MiB "\xaa\x90\xad..\r\xeb\xe5,v10969":"\xff\xff\xcd..M\xf7\x1d,v58555"
+13:34:55.507528 version@stat F·[0 7] S·14MiB[0B 14MiB] Sc·[0.00 0.14]
+13:34:55.507849 table@compaction committed F+2 S-660KiB Ke·0 D·17020 T·376.374074ms
+13:34:55.508523 table@remove removed @12
+13:34:55.509179 table@remove removed @8
+13:34:55.509435 table@remove removed @9
+13:34:55.509733 table@remove removed @10
+13:34:55.510265 table@remove removed @11
+13:44:36.713542 db@close closing
+13:44:36.716458 db@close done T·2.909102ms
