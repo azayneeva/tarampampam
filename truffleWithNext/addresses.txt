@@ -1,4 +1,2 @@
-CampaignFactory: '0x959373f8874babde401f5d434960934e70de9e0dd70b8d53cb56e83501e708fe'
+CampaignFactory: '0x31cffdf64b8e224203a79c9ee6e049c10852325d'
 Deployed from: '0x6403e1c470f3bb7f0f1bd23756624e0293f98079'
-
-'0xc08bbbf83ddcce7ef8df3d40a9082590aff24b9e'
