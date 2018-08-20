@@ -1,4 +1,4 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.4.24;
 
 contract CampaignFactory {
     address[] public deployedCampaigns;
@@ -77,7 +77,6 @@ contract Campaign {
         require(!request.complete);
 
         request.recipient.transfer(request.value);
-        request.complete = true;
     }
 
     function getSummary() public view returns (uint, uint, uint, uint, address) {
