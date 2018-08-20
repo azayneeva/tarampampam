@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "truffle test ./test/Campaign.test.js"
+    "test": "truffle test ./test/Campaign.test.js",
+    "dev": "cd ./client && node server.js"
   },
   "author": "",
   "license": "ISC",

@@ -30,7 +30,7 @@ class CampaignNew extends Component {
                 .send({
                     from: accounts[0]
                 })
-            Router.pushRoute('/new')
+            Router.pushRoute('/')
         } catch (error) {
             console.log('error with submitting the form', error.message)
             this.setState({errorMessage: error.message})
