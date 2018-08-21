@@ -27,6 +27,6 @@ contract ContractWithSafeMath {
     /* The add method of the SafeMath library verifies that there is no overflow and 
         reverts the transaction in case of an error. 
         If there are no errors, it returns the result. */
-        result = a.add(b)
+        result = a.add(b);
     }
 }
