@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Table, Button, Message} from 'semantic-ui-react';
-import Campaign from '../lib/contracts/Campaign.json';
+import Project from '../lib/contracts/Project.json';
 
-class RequestRow extends Component {
+class TaskRow extends Component {
     state = {
         approveErrorMessage: '',
         finalizeErrorMessage: ''
@@ -16,9 +16,9 @@ class RequestRow extends Component {
         })
         try {
             const accounts = await web3.eth.getAccounts();
-            const campaign = await new web3.eth.Contract(Campaign.abi, address);
-            await campaign.methods
-                .approveRequest(id)
+            const project = await new web3.eth.Contract(Project.abi, address);
+            await project.methods
+                .approveTask(id)
                 .send({
                     from: accounts[0]
                 })
@@ -37,9 +37,9 @@ class RequestRow extends Component {
         })
         try {
             const accounts = await web3.eth.getAccounts();
-            const campaign = await new web3.eth.Contract(Campaign.abi, address);
-            await campaign.methods
-                .finalizeRequest(id)
+            const project = await new web3.eth.Contract(Project.abi, address);
+            await project.methods
+                .finalizeTask(id)
                 .send({
                     from: accounts[0]
                 })
@@ -52,23 +52,23 @@ class RequestRow extends Component {
 
     render() {
         const {Row, Cell} = Table;
-        const {id, request, web3, approversCount} = this.props;
-        const readyToBeFinalized = request.approvalCount > approversCount/2;
+        const {id, task, web3, approversCount} = this.props;
+        const readyToBeFinalized = task.approvalCount > approversCount/2;
         return (
-            <Row disabled={request.complete} positive={readyToBeFinalized && !request.complete}>
+            <Row disabled={task.complete} positive={readyToBeFinalized && !task.complete}>
                 <Cell>{id}</Cell>
-                <Cell>{request.description}</Cell>
-                <Cell>{`${web3.utils.fromWei(request.value, 'ether')} ether`}</Cell>
-                <Cell>{request.recipient}</Cell>
-                <Cell>{`${request.approvalCount}/${approversCount}`}</Cell>
+                <Cell>{task.description}</Cell>
+                <Cell>{`${web3.utils.fromWei(task.value, 'ether')} ether`}</Cell>
+                <Cell>{task.recipient}</Cell>
+                <Cell>{`${task.approvalCount}/${approversCount}`}</Cell>
                 <Cell>
-                    {!request.complete &&
+                    {!task.complete &&
                         <Button color='green' basic onClick={this.onApprove}>Approve</Button>
                     }
                     {!!this.state.approveErrorMessage && <Message error>{this.state.approveErrorMessage}</Message>}
                 </Cell>
                 <Cell>
-                    {!request.complete &&
+                    {!task.complete &&
                         <Button basic color='blue' basic onClick={this.onFinalize}>
                             Finalize
                         </Button>
@@ -80,4 +80,4 @@ class RequestRow extends Component {
     }
 };
 
-export default RequestRow;
+export default TaskRow;

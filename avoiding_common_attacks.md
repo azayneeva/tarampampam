@@ -7,7 +7,7 @@ This bug involves functions that could be called repeatedly, before the first in
 
 #### Tackled the risk by: 
 
-Used `address.transfer()` instead of `address.call.value(y)()` which is considered safe against reentrancy. In `finalizeRequest` function `request.complete` has been set to `true` before transferring funds so that reentry at this point is impossible.
+Used `address.transfer()` instead of `address.call.value(y)()` which is considered safe against reentrancy. In `finalizeTask` function `task.complete` has been set to `true` before transferring funds so that reentry at this point is impossible.
 
 ## Cross-function Race Conditions
 
@@ -70,7 +70,7 @@ If a contract gives the creator/owner of the contract too much power, they may t
 
 #### Tackled the risk by:
 
-To prevent users from modifying Campaign contract by removing security restrictions, I've added a Factory contract that handles deployment of a new instance of Campaign contract. It means that whenever users want to create a new campaign they will have to invoke Factory contract first, so there will be no chance for a malicious creator to modify the Campaign contract. 
+To prevent users from modifying project contract by removing security restrictions, I've added a Factory contract that handles deployment of a new instance of project contract. It means that whenever users want to create a new project they will have to invoke Factory contract first, so there will be no chance for a malicious creator to modify the project contract. 
 
 ## Tx.Origin Problem
 

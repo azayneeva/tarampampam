@@ -4,25 +4,25 @@ import Web3Container from '../lib/Web3Container';
 import Layout from '../components/Layout';
 import {Link} from '../routes';
 
-class CampaignIndex extends Component {
+class ProjectIndex extends Component {
     state={
-        campaigns: []
+        projects: []
     }
 
     async componentWillMount() {
         const {contract} = this.props;
-        const campaigns = await contract.methods.getDeployedCampaigns().call();
+        const projects = await contract.methods.getDeployedProjects().call();
         this.setState({
-            campaigns
+            projects
         })
     }
 
-    renderCampaigns = () => {
-        const items = this.state.campaigns.map(campaign => {
+    renderProjects = () => {
+        const items = this.state.projects.map(project => {
             return {
-                header: campaign,
+                header: project,
                 description: (
-                    <Link route={`/projects/${campaign}`}>
+                    <Link route={`/projects/${project}`}>
                         <a>View a project</a>
                     </Link>
                 ),
@@ -48,7 +48,7 @@ class CampaignIndex extends Component {
                             />
                         </a>
                     </Link>
-                    {this.renderCampaigns()}
+                    {this.renderProjects()}
                 </div>
             </Layout>
         )
@@ -57,10 +57,10 @@ class CampaignIndex extends Component {
 
 export default () => (
     <Web3Container 
-    renderLoading={() => <div>Loading CampaignIndex Page...</div>}
+    renderLoading={() => <div>Loading ProjectIndex Page...</div>}
     render={
             ({web3, accounts, contract}) => (
-                <CampaignIndex accounts={accounts} contract={contract} web3={web3} />
+                <ProjectIndex accounts={accounts} contract={contract} web3={web3} />
             )
         }
     />

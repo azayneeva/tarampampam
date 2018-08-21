@@ -1,31 +1,31 @@
 import React, {Component} from 'react';
 import {Form, Button, Message, Input} from 'semantic-ui-react';
 import Web3Container from '../../../lib/Web3Container';
-import Campaign from '../../../lib/contracts/Campaign.json';
+import Project from '../../../lib/contracts/Project.json';
 import {Link, Router} from '../../../routes';
 import Layout from '../../../components/Layout';
 
-class NewRequest extends Component {
+class NewTask extends Component {
 
     state = {
         value: '',
         description: '',
         recipient: '',
-        campaign: null,
+        project: null,
         errorMessage: '',
         loading: false
     };
 
     async componentWillMount() {
         const {address, web3} = this.props;
-        const campaign = await new web3.eth.Contract(Campaign.abi, address);
+        const project = await new web3.eth.Contract(Project.abi, address);
         this.setState({
-            campaign
+            project
         })
     };
 
     onSubmit = async event => {
-        const {description, value, recipient, campaign} = this.state;
+        const {description, value, recipient, project} = this.state;
         const {web3} = this.props;
 
         event.preventDefault();
@@ -34,15 +34,15 @@ class NewRequest extends Component {
         })
         try {
             const accounts = await web3.eth.getAccounts();
-            await campaign.methods
-                .createRequest(
+            await project.methods
+                .createTask(
                     description, 
                     web3.utils.toWei(value, 'ether'), 
                     recipient)
                 .send({
                     from: accounts[0]
                 })
-            Router.pushRoute(`/projects/${this.props.address}/requests`)
+            Router.pushRoute(`/projects/${this.props.address}/tasks`)
         } catch (error) {
             this.setState({
                 errorMessage: error.message
@@ -57,7 +57,7 @@ class NewRequest extends Component {
     render() {
         return (
             <Layout>
-                <Link route={`/projects/${this.props.address}/requests`}>
+                <Link route={`/projects/${this.props.address}/tasks`}>
                     <a>
                         Back
                     </a>
@@ -104,7 +104,7 @@ class NewRequest extends Component {
     }
 }
 
-export default class RequestNew extends Component {
+export default class TaskNew extends Component {
     static async getInitialProps(props) {
         const address = props.query.address
         return {address}
@@ -113,10 +113,10 @@ export default class RequestNew extends Component {
     render() {
         return (
             <Web3Container 
-                renderLoading={() => <div>Loading NewRequest Page...</div>}
+                renderLoading={() => <div>Loading NewTask Page...</div>}
                 render={
                         ({web3, accounts, contract}) => (
-                            <NewRequest accounts={accounts} contract={contract} web3={web3} address={this.props.address}/>
+                            <NewTask accounts={accounts} contract={contract} web3={web3} address={this.props.address}/>
                         )
                     }
             />

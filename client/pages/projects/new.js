@@ -4,7 +4,7 @@ import Layout from '../../components/Layout';
 import Web3Container from '../../lib/Web3Container';
 import {Router} from '../../routes';
 
-class CampaignNew extends Component {
+class ProjectNew extends Component {
     state = {
         minimumContribution: '',
         errorMessage: '',
@@ -26,7 +26,7 @@ class CampaignNew extends Component {
             const accounts = await web3.eth.getAccounts();
             console.log('show me accounts', accounts)
             await contract.methods
-                .createCampaign(this.state.minimumContribution)
+                .createProject(this.state.minimumContribution)
                 .send({
                     from: accounts[0]
                 })
@@ -69,10 +69,10 @@ class CampaignNew extends Component {
 
 export default () => (
     <Web3Container 
-    renderLoading={() => <div>Loading CampaignNew Page...</div>}
+    renderLoading={() => <div>Loading ProjectNew Page...</div>}
     render={
             ({web3, accounts, contract}) => (
-                <CampaignNew accounts={accounts} contract={contract} web3={web3} />
+                <ProjectNew accounts={accounts} contract={contract} web3={web3} />
             )
         }
     />
