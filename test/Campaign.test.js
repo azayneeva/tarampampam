@@ -29,9 +29,9 @@ contract('CampaignFactory', accounts => {
     it('allows people to contribute money and marks them as approvers', async () => {
         await Campaign.at(deployedCampaign).contribute({
             value: '200',
-            from: accounts[1]
+            from: accounts[0]
         });
-        const isContributor = await Campaign.at(deployedCampaign).approvers.call(accounts[1]);
+        const isContributor = await Campaign.at(deployedCampaign).approvers.call(accounts[0]);
         assert(isContributor);
     });  
 
@@ -64,7 +64,7 @@ contract('CampaignFactory', accounts => {
     it('allows contributors to approve a request', async () => {
         await Campaign.at(deployedCampaign)
             .approveRequest('0', {
-                from: accounts[1],
+                from: accounts[0],
                 gas: '1000000'
             });
         const approvers = await Campaign.at(deployedCampaign).approversCount.call();
