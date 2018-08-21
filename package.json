@@ -1,0 +1,18 @@
+{
+  "name": "trufflewithnext",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test ./test/Campaign.test.js",
+    "dev": "cd ./client && node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "web3": "^1.0.0-beta.35"
+  }
+}
