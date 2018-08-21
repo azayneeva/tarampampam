@@ -49,10 +49,10 @@ class RequestIndex extends Component {
         const {Header, Row, HeaderCell, Body} = Table;
         return (
             <Layout>
-                <h3>Requests</h3>
-                <Link route={`/campaigns/${this.props.address}/requests/new`}>
+                <h3>Tasks</h3>
+                <Link route={`/projects/${this.props.address}/requests/new`}>
                     <a>
-                        <Button primary floated='right' style={{marginBottom: 10}}>Add Request</Button>
+                        <Button basic color='blue' floated='right' style={{marginBottom: 10}}>Add a Task</Button>
                     </a>
                 </Link>
                 <Table>
@@ -71,7 +71,7 @@ class RequestIndex extends Component {
                         {this.renderRows()}
                     </Body>
                 </Table>
-                <div>Found {this.state.requestCount} requests</div>
+                <div>{this.state.requestCount} tasks</div>
             </Layout>
         )
     }

@@ -21,9 +21,8 @@ class ContributeForm extends Component {
                 from: accounts[0],
                 value: web3.utils.toWei(this.state.value, 'ether')
             })
-            Router.pushRoute(`/campaigns/${address}`)
+            Router.pushRoute(`/projects/${address}`)
         } catch (error) {
-            console.log('show me the error', error)
             this.setState({
                 loading: false,
                 errorMessage: error.message
@@ -53,7 +52,7 @@ class ContributeForm extends Component {
                     />
                 </Form.Field>
                 <Message error header={'Oops!'} content={this.state.errorMessage}/>
-                <Button primary loading={this.state.loading}>
+                <Button basic color='blue' loading={this.state.loading}>
                     Contribute
                 </Button>
             </Form>

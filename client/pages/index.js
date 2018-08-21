@@ -22,8 +22,8 @@ class CampaignIndex extends Component {
             return {
                 header: campaign,
                 description: (
-                    <Link route={`/campaigns/${campaign}`}>
-                        <a>View campaign</a>
+                    <Link route={`/projects/${campaign}`}>
+                        <a>View a project</a>
                     </Link>
                 ),
                 fluid: true
@@ -37,14 +37,14 @@ class CampaignIndex extends Component {
         return (
             <Layout>
                 <div>
-                    <h3>Open Campaigns</h3>
-                    <Link route='/campaigns/new'>
+                    <h3>Open Projects</h3>
+                    <Link route='/projects/new'>
                         <a>
                             <Button 
-                                content='Create Campaign'
+                                content='Create a Project'
                                 floated='right'
                                 icon='add'
-                                primary
+                                basic color='blue'
                             />
                         </a>
                     </Link>

@@ -42,7 +42,7 @@ class NewRequest extends Component {
                 .send({
                     from: accounts[0]
                 })
-            Router.pushRoute(`/campaigns/${this.props.address}/requests`)
+            Router.pushRoute(`/projects/${this.props.address}/requests`)
         } catch (error) {
             this.setState({
                 errorMessage: error.message
@@ -57,12 +57,12 @@ class NewRequest extends Component {
     render() {
         return (
             <Layout>
-                <Link route={`/campaigns/${this.props.address}/requests`}>
+                <Link route={`/projects/${this.props.address}/requests`}>
                     <a>
                         Back
                     </a>
                 </Link>
-                <h3>Create a Request</h3>
+                <h3>Create a Task</h3>
                 <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
                     <Form.Field>
                         <label>Description</label>
@@ -97,7 +97,7 @@ class NewRequest extends Component {
                         />
                     </Form.Field>
                     <Message error header={'Oops!'} content={this.state.errorMessage} />
-                    <Button primary loading={this.state.loading}>Create</Button>
+                    <Button basic color='blue' loading={this.state.loading}>Create</Button>
                 </Form>
             </Layout>
         )

@@ -69,7 +69,7 @@ class RequestRow extends Component {
                 </Cell>
                 <Cell>
                     {!request.complete &&
-                        <Button primary basic onClick={this.onFinalize}>
+                        <Button basic color='blue' basic onClick={this.onFinalize}>
                             Finalize
                         </Button>
                     }

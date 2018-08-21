@@ -42,7 +42,7 @@ class CampaignNew extends Component {
     render() {
         return (
             <Layout>
-                <h3>Create a New Campaign</h3>
+                <h3>Create a New Project</h3>
                 <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
                     <Form.Field>
                         <label>Minimum Contribution</label>
@@ -60,7 +60,7 @@ class CampaignNew extends Component {
                         />
                     </Form.Field>
                     <Message error header='Oops!' content={this.state.errorMessage} />
-                    <Button loading={this.state.loading} primary>Create</Button>
+                    <Button loading={this.state.loading} floated='right' basic color='blue'>Create</Button>
                 </Form>
             </Layout>
         )

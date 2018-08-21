@@ -67,7 +67,7 @@ class CampaignShow extends Component {
     render() {
         return (
             <Layout>  
-                <h3>Show campaign</h3>
+                <h3>Project Details</h3>
                 <Grid>
                     <Grid.Row>
                     <Grid.Column width={10}>
@@ -79,10 +79,10 @@ class CampaignShow extends Component {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column>
-                            <Link route={`/campaigns/${this.props.address}/requests`}>
+                            <Link route={`/projects/${this.props.address}/requests`}>
                                 <a>
-                                    <Button primary>
-                                        View Requests
+                                    <Button basic color='blue'>
+                                        View Tasks
                                     </Button>
                                 </a>
                             </Link>
