@@ -1,5 +1,5 @@
-var CampaignFactory = artifacts.require("CampaignFactory");
+var DeployAProject = artifacts.require("DeployAProject");
 
 module.exports = function(deployer) {
-  deployer.deploy(CampaignFactory);
+  deployer.deploy(DeployAProject);
 };

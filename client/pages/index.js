@@ -4,26 +4,26 @@ import Web3Container from '../lib/Web3Container';
 import Layout from '../components/Layout';
 import {Link} from '../routes';
 
-class CampaignIndex extends Component {
+class ProjectIndex extends Component {
     state={
-        campaigns: []
+        projects: []
     }
 
     async componentWillMount() {
         const {contract} = this.props;
-        const campaigns = await contract.methods.getDeployedCampaigns().call();
+        const projects = await contract.methods.getDeployedProjects().call();
         this.setState({
-            campaigns
+            projects
         })
     }
 
-    renderCampaigns = () => {
-        const items = this.state.campaigns.map(campaign => {
+    renderProjects = () => {
+        const items = this.state.projects.map(project => {
             return {
-                header: campaign,
+                header: project,
                 description: (
-                    <Link route={`/campaigns/${campaign}`}>
-                        <a>View campaign</a>
+                    <Link route={`/projects/${project}`}>
+                        <a>View a project</a>
                     </Link>
                 ),
                 fluid: true
@@ -37,18 +37,18 @@ class CampaignIndex extends Component {
         return (
             <Layout>
                 <div>
-                    <h3>Open Campaigns</h3>
-                    <Link route='/campaigns/new'>
+                    <h3>Open Projects</h3>
+                    <Link route='/projects/new'>
                         <a>
                             <Button 
-                                content='Create Campaign'
+                                content='Create a Project'
                                 floated='right'
                                 icon='add'
-                                primary
+                                basic color='blue'
                             />
                         </a>
                     </Link>
-                    {this.renderCampaigns()}
+                    {this.renderProjects()}
                 </div>
             </Layout>
         )
@@ -57,10 +57,10 @@ class CampaignIndex extends Component {
 
 export default () => (
     <Web3Container 
-    renderLoading={() => <div>Loading CampaignIndex Page...</div>}
+    renderLoading={() => <div>Loading ProjectIndex Page...</div>}
     render={
             ({web3, accounts, contract}) => (
-                <CampaignIndex accounts={accounts} contract={contract} web3={web3} />
+                <ProjectIndex accounts={accounts} contract={contract} web3={web3} />
             )
         }
     />

@@ -3,40 +3,40 @@ import {Button, Table} from 'semantic-ui-react';
 import {Link} from '../../../routes';
 import Web3Container from '../../../lib/Web3Container';
 import Layout from '../../../components/Layout';
-import Campaign from '../../../lib/contracts/Campaign.json';
-import RequestRow from '../../../components/RequestRow';
+import Project from '../../../lib/contracts/Project.json';
+import TaskRow from '../../../components/TaskRow';
 
-class RequestIndex extends Component {
+class TaskIndex extends Component {
     state = {
-        requests: null,
-        requestCount: '',
+        tasks: null,
+        taskCount: '',
         approversCount: ''
     };
 
     async componentWillMount() {
         const {address, web3} = this.props;
-        const campaign = await new web3.eth.Contract(Campaign.abi, address);
-        const requestCount = await campaign.methods.getRequestsCount().call();
-        const requests = await Promise.all(
-            Array(parseInt(requestCount)).fill().map((element, index) => {
-                return campaign.methods.requests(index).call()
+        const project = await new web3.eth.Contract(Project.abi, address);
+        const taskCount = await project.methods.getTasksCount().call();
+        const tasks = await Promise.all(
+            Array(parseInt(taskCount)).fill().map((element, index) => {
+                return project.methods.tasks(index).call()
             })
         );
-        const approversCount = await campaign.methods.approversCount().call();
+        const approversCount = await project.methods.approversCount().call();
         this.setState({
-            requests,
-            requestCount,
+            tasks,
+            taskCount,
             approversCount
         });
     };
 
     renderRows = () => {
-        if (this.state.requests) {
-            return this.state.requests.map(((request, index) => {
-                return <RequestRow 
+        if (this.state.tasks) {
+            return this.state.tasks.map(((task, index) => {
+                return <TaskRow 
                     key={index}
                     id={index}
-                    request={request}
+                    task={task}
                     web3={this.props.web3}
                     approversCount={this.state.approversCount}
                     address={this.props.address}
@@ -49,10 +49,10 @@ class RequestIndex extends Component {
         const {Header, Row, HeaderCell, Body} = Table;
         return (
             <Layout>
-                <h3>Requests</h3>
-                <Link route={`/campaigns/${this.props.address}/requests/new`}>
+                <h3>Tasks</h3>
+                <Link route={`/projects/${this.props.address}/tasks/new`}>
                     <a>
-                        <Button primary floated='right' style={{marginBottom: 10}}>Add Request</Button>
+                        <Button basic color='blue' floated='right' style={{marginBottom: 10}}>Add a Task</Button>
                     </a>
                 </Link>
                 <Table>
@@ -71,13 +71,13 @@ class RequestIndex extends Component {
                         {this.renderRows()}
                     </Body>
                 </Table>
-                <div>Found {this.state.requestCount} requests</div>
+                <div>{this.state.taskCount} tasks</div>
             </Layout>
         )
     }
 };
 
-export default class Request extends Component {
+export default class Task extends Component {
     static async getInitialProps(props) {
             const {address} = props.query;
             return {address}
@@ -85,10 +85,10 @@ export default class Request extends Component {
     render() {
         return (
             <Web3Container 
-                renderLoading={() => <div>Loading RequestIndex Page...</div>}
+                renderLoading={() => <div>Loading TaskIndex Page...</div>}
                 render={
                         ({web3, accounts, contract}) => (
-                            <RequestIndex accounts={accounts} contract={contract} web3={web3} address={this.props.address} />
+                            <TaskIndex accounts={accounts} contract={contract} web3={web3} address={this.props.address} />
                         )
                     }
             />
